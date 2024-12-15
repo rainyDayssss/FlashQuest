@@ -1,6 +1,7 @@
 package MenuPage;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
 import QuestPage.quest;
 import javafx.stage.Stage;
@@ -30,12 +31,12 @@ public class menuController {
     }
 
     public void clickUserButton() {
+        // TODO HAGGAI
+    }
+    public void clickStartButton(Folder folder) {
 
     }
-    public void clickStartButton() {
-
-    }
-    public void clickViewButton() {
+    public void clickViewButton(Folder folder) {
 
     }
 }

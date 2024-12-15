@@ -29,6 +29,12 @@ public class Folder {
         this.folderName = folderName;
     }
 
+    public void deleteFlashcard(Flashcard flashcard) {
+        correctFlashcardList.remove(flashcard);
+        wrongFlashcardList.remove(flashcard);
+        flashcardList.remove(flashcard);
+    }
+
     public boolean isEmpty() {
         return flashcardList.isEmpty();
     }

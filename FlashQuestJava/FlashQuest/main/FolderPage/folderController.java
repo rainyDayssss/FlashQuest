@@ -1,6 +1,7 @@
 package FolderPage;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Flashcard;
 import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
 import CreateSmithCard.smithCard;
@@ -45,4 +46,5 @@ public class folderController {
     public void clickEditButton(Folder folder) {
         // TODO EDIT FOLDER
     }
+
 }

@@ -17,6 +17,9 @@ public class FolderService {
 
     public void setUser(User user) { // set the user and user's fodler storage object
         this.user = user;
+    }
+
+    public void setFolderStorage() {
         folderStorage = user.getFolderStorage();
     }
 
@@ -73,4 +76,13 @@ public class FolderService {
         return folderStorage.getFolderByFolderId(folderId).getAllCorrectFlashcards();
     }
 
+    public void deleteFlashcardByFolderIdAndFlashcardId(int flashcardId, int folderId) {
+        Flashcard flashcard = folderStorage.getFolderByFolderId(folderId).getFlashcardByFlashcardId(flashcardId);
+        folderStorage.getFolderByFolderId(folderId).deleteFlashcard(flashcard);
+    }
+
+    public void editFlashcardByFolderIdAndFlashcardId(String newQuestion, String newAnswer, Folder folder, Flashcard flashcard) {
+        Flashcard flashcard2 = folderStorage.getFolderByFolderId(folder.getId()).getFlashcardByFlashcardId(flashcard.getId());
+        flashcard2.editFlashcard(newQuestion, newAnswer);
+    }
 }

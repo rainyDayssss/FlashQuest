@@ -46,13 +46,17 @@ public class FlashQuestController {
     // Choosing of avatar
     public void chooseWarrior() {
         avatarService.chooseWarrior();
+        folderService.setFolderStorage();
     }
+
     public void chooseMage() {
         avatarService.chooseMage();
+        folderService.setFolderStorage();
     }
 
     public void chooseTank() {
         avatarService.chooseTank();
+        folderService.setFolderStorage();
     }
 
     public Level getLevelObject() {
@@ -130,4 +134,12 @@ public class FlashQuestController {
     }
 
 
+    public void deleteFlashcardByFolderIdAndFlashcardId(int flashcardId, int folderId) {
+        folderService.deleteFlashcardByFolderIdAndFlashcardId(flashcardId, folderId);
+    }
+
+    // This uses object btw
+    public void editFlashcardByFolderIdAndFlashcardId(String newQuestion, String newAnswer, Folder folder, Flashcard flashcard) {
+        folderService.editFlashcardByFolderIdAndFlashcardId(newQuestion, newAnswer, folder, flashcard);
+    }
 }

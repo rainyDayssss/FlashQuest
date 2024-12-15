@@ -1,6 +1,7 @@
 package QuestPage;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Folder;
 import StartingPage.StartingPageController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -59,6 +60,7 @@ public class quest {
         Button userButton = sideBarIcons("Zyche", user, 30, 40);
         userButton.getStyleClass().add("menu-button");
 
+        // TODO QUEST BTNS
         menuButton.setOnAction(e -> controller.clickMenuButton());
         smithCardButton.setOnAction(e -> controller.clickSmithFolderButton());
         questButton.setOnAction(e -> controller.clickQuestButton());
@@ -88,9 +90,8 @@ public class quest {
         questLayout.getChildren().add(title1);
 
         //Creates buttons based on how many the user has added folders
-        int total = 15;
-        for (int i=0; i < total; i++) {
-            HBox questItem = questShow("Technology Quest ");
+        for (Folder folder : flashQuestController.getAllFolders()) {
+            HBox questItem = questShow(folder);
             questLayout.getChildren().add(questItem);
             questItem.setFocusTraversable(false); // Prevent focus on questLayout
         }
@@ -137,10 +138,14 @@ public class quest {
         return button;
     }
     //Responsible for showing the quest
-    private HBox questShow(String name) {
+    private HBox questShow(Folder folder) {
         questController controller = new questController(stage, flashQuestController);
-        Text text = new Text (name);
+        // Create a text node for the folder name
+        Text text = new Text(folder.getFolderName());
+        text.setWrappingWidth(200);
         text.getStyleClass().add("question");
+
+        // Create buttons
         Button view = new Button(" View ");
         Button start = new Button(" Start ");
         start.setPrefWidth(200);
@@ -150,16 +155,31 @@ public class quest {
         start.getStyleClass().add("start-button");
         view.getStyleClass().add("view-button");
 
-        start.setOnAction(e -> controller.clickStartButton());
-        view.setOnAction(e -> controller.clickViewButton());
+        // Prevent focus on the buttons
+        view.setFocusTraversable(false);
+        start.setFocusTraversable(false);
 
+        // TODO should be edit. and can the list of flascards
+        // Add button functionality
+        view.setOnAction(e -> {
+            // Handle "View" button click
+            controller.clickViewButton(folder);
+        });
+
+        start.setOnAction(e -> {
+            // Handle "Start" button click
+            controller.clickStartButton(folder);
+        });
+
+        // Layout
         HBox layout = new HBox(25, text, view, start);
         layout.setTranslateY(50);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 10;"); // Optional spacing around the box
-
         layout.getStyleClass().add("quest-layout");
+
         return layout;
     }
+
 
 }
