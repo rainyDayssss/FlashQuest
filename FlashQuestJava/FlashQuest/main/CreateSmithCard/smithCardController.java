@@ -1,7 +1,9 @@
 package CreateSmithCard;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
+import FolderPage.folder;
 import MenuPage.menu;
 import QuestPage.quest;
 import javafx.stage.Stage;
@@ -37,4 +39,16 @@ public class smithCardController {
     public void clickViewButton() {
 
     }
+
+    // TODO
+    public void clickChooseFolder(Folder folder) {
+        folder Folder = new folder(stage, flashQuestController, folder);
+        Folder.show();
+    }
+
+    public void clickCreateSmithcardbtn(String question, String answer, Folder folder) {
+        // TODO LOGIC OF CREATING SMITH CARD
+        folder.addFlashcard(question, answer);
+    }
+
 }

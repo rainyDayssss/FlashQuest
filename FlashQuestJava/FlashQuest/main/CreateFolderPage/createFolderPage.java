@@ -115,17 +115,18 @@ public class createFolderPage {
 
         // Notification text
         Text notificationText = new Text();
-        notificationText.setStyle("-fx-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: bold;"); // Green text
         notificationText.setVisible(false);
 
         // Button actions
         createButton.setOnAction(e -> {
             if (questionField.getText().isEmpty()) {
                 notificationText.setText("Cannot create with empty folder name!");
+                notificationText.setStyle("-fx-fill: #FF0000; -fx-font-size: 16px; -fx-font-weight: bold;"); // Green text
+
             }
             else {
                 notificationText.setText("Folder has been created successfully!");
-                notificationText.setVisible(true);
+                notificationText.setStyle("-fx-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: bold;"); // Green text
                 controller.clickCreateFolderButton(questionField.getText());
                 questionField.setText("");
             }

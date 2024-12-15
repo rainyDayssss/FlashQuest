@@ -32,8 +32,9 @@ public class questController {
     public void clickStartButton() {
 
     }
+
     public void clickViewButton() {
-        folder Folder = new folder(stage, flashQuestController);
-        Folder.show();
+//        folder Folder = new folder(stage, flashQuestController, folder);
+//        Folder.show();
     }
 }

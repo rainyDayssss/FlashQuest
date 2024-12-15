@@ -7,8 +7,9 @@
 }
 .description {
     -fx-font-size: 15px; /* Set font size */
-    -fx-fill: #FFFFFF; /* Set font color */
+    -fx-fill: #FFAE00; /* Set font color */
     -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-alignment: center;
 }
 .question {
     -fx-font-size: 20px; /* Set font size */

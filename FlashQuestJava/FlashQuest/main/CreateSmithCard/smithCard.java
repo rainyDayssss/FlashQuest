@@ -1,11 +1,14 @@
 package CreateSmithCard;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Folder;
 import MenuPage.menuController;
+import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.layout.Pane;  // Use Pane for free positioning
 import javafx.scene.text.Font;
@@ -19,6 +22,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 
 import java.awt.*;
 
@@ -26,10 +30,12 @@ import java.awt.*;
 public class smithCard{
     private Stage stage;
     private FlashQuestController flashQuestController;
+    private Folder folder;
 
-    public smithCard (Stage stage, FlashQuestController flashQuestController) {
+    public smithCard (Stage stage, FlashQuestController flashQuestController, Folder folder) {
         this.stage = stage;  // Store the Stage passed to the constructor
         this.flashQuestController = flashQuestController;
+        this.folder = folder;
     }
     public void show() {
         // Load the background image
@@ -92,7 +98,14 @@ public class smithCard{
         part2.setStyle("-fx-fill: #FFAE00");
         title2.getStyleClass().add("Title");
 
-        Text description = new Text("Create smithcards to start a quest");
+//        Text description1 = new Text("Created Smithcard will be added to ");
+//        description1.setStyle("-fx-fill: white");
+//        Text description2 = new Text(folder.getFolderName());
+//        description2.setStyle("-fx-fill: #FF0000");
+//        TextFlow description = new TextFlow(description1, description2);
+        // Text description = new Text("Created Smithcard will be added to" + description2);
+
+        Text description = new Text("  This Smithcard will be added to " + folder.getFolderName());
         description.getStyleClass().add("description");
 
         Text question = new Text("Question");
@@ -118,13 +131,45 @@ public class smithCard{
         createButton.setPrefWidth(200);
         createButton.setPrefHeight(50);
 
-        Button folderButton = new Button (" Folder ");
+        Text notificationText = new Text();
+        notificationText.setVisible(false);
+
+        // TODO
+        createButton.setOnAction(e -> {
+            if (!questionField.getText().isEmpty() && !answerField.getText().isEmpty()) {
+                notificationText.setText("Created Smithcard!");
+                notificationText.setStyle("-fx-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: bold;"); // Green text
+                controller.clickCreateSmithcardbtn(questionField.getText(), answerField.getText(), folder);
+                System.out.println("Created sc");
+                questionField.setText("");
+            }
+            else { // color red
+                notificationText.setText("Cannot create with empty question or answer!");
+                notificationText.setStyle("-fx-fill: #FF0000; -fx-font-size: 16px; -fx-font-weight: bold;"); // Green text
+            }
+            notificationText.setVisible(true);
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.setOnFinished(event -> notificationText.setVisible(false));
+            pause.play();
+        });
+
+
+        Button folderButton = new Button (" Choose Folder ");
         folderButton.getStyleClass().add("folder-button");
         folderButton.setPrefWidth(200);
         folderButton.setPrefHeight(50);
 
+        Tooltip folderButtonTooltip = new Tooltip("Click to choose a folder \nand start creating Smithcards!");
+        folderButtonTooltip.setShowDelay(Duration.seconds(0.1));
+        Tooltip.install(folderButton, folderButtonTooltip);
+
+        folderButton.setOnAction(e -> {
+            controller.clickChooseFolder(folder);
+        });
+
+
         Pane root1 = new Pane();
-        root1.getChildren().addAll(title2, description, question, answer, questionField, answerField, folderButton, createButton);
+        root1.getChildren().addAll(title2, description, question, answer, questionField, answerField, folderButton, createButton, notificationText);
         root.setCenter(root1);
 
         title2.layoutXProperty().bind(Bindings.multiply(0.24, root1.widthProperty()));
@@ -150,6 +195,9 @@ public class smithCard{
 
         folderButton.layoutXProperty().bind(Bindings.multiply(0.55 , root1.widthProperty()));
         folderButton.layoutYProperty().bind(Bindings.multiply(0.67, root1.heightProperty()));
+
+        notificationText.layoutXProperty().bind(Bindings.multiply(0.38, root1.widthProperty()));
+        notificationText.layoutYProperty().bind(Bindings.multiply(0.80, root1.heightProperty()));
 
         // Scene
         Scene scene = new Scene(root, 1280, 620);

@@ -3,6 +3,7 @@ package FolderPage;
 import Backend.Controller.FlashQuestController;
 import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
+import CreateSmithCard.smithCard;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +20,13 @@ import javafx.stage.Stage;
 public class folder {
     private Stage stage;
     private FlashQuestController flashQuestController;
+    private Folder folder;
+
+    public folder(Stage stage, FlashQuestController flashQuestController, Folder folder) {
+        this.stage = stage;  // Store the Stage passed to the constructor
+        this.flashQuestController = flashQuestController;
+        this.folder = folder;
+    }
 
     public folder(Stage stage, FlashQuestController flashQuestController) {
         this.stage = stage;  // Store the Stage passed to the constructor
@@ -68,7 +76,7 @@ public class folder {
         VBox.setVgrow(spacer, Priority.ALWAYS);
         sidebar.getChildren().addAll(title, menuButton, smithCardButton, questButton, spacer, userButton);
 
-        // Close button setup
+        // TODO Close button setup
         Button closeButton = new Button("X");
         closeButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 18px;");
         closeButton.setPrefSize(40, 40);
@@ -96,7 +104,7 @@ public class folder {
 
         // Dynamically populate the VBox with folders
         for (Folder folder : flashQuestController.getAllFolders()) {
-            HBox questItem = questShow(folder.getFolderName());
+            HBox questItem = questShow(folder);
             questLayout.getChildren().add(questItem);
         }
 
@@ -143,23 +151,34 @@ public class folder {
     }
 
     // Responsible for showing the quest
-    private HBox questShow(String name) {
+    private HBox questShow(Folder folder) {
         folderController controller = new folderController(stage, flashQuestController);
-        Text text = new Text(name);
+        Text text = new Text(folder.getFolderName());
         text.setWrappingWidth(200);
         text.getStyleClass().add("question");
-        Button edit = new Button(" Select ");
-        Button select = new Button(" Edit ");
-        edit.setPrefWidth(200);
-        edit.setPrefHeight(40);
-        edit.getStyleClass().add("edit-button");
+
+        Button edit = new Button(" Edit ");
+        Button select = new Button(" Select ");
         select.setPrefWidth(200);
         select.setPrefHeight(40);
         select.getStyleClass().add("select-button");
-        select.setOnAction(e -> controller.clickEditButton());
-        edit.setOnAction(e -> controller.clickSelectButton());
+        edit.setPrefWidth(200);
+        edit.setPrefHeight(40);
+        edit.getStyleClass().add("edit-button");
 
-        HBox layout = new HBox(25, text, select, edit);
+        // Set action for the Select button
+        select.setOnAction(e -> {
+            // Logic to add flashcards to the selected folder
+            controller.clickSelectButton(folder);
+        });
+
+        // Set action for the Edit button
+        edit.setOnAction(e -> {
+            // Logic to edit the selected folder
+            controller.clickEditButton(folder);
+        });
+
+        HBox layout = new HBox(25, text, edit, select);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 15;"); // Optional spacing around the box
         layout.getStyleClass().add("quest-layout");
@@ -168,7 +187,13 @@ public class folder {
 
     // Close the current page and navigate to another page (e.g., Menu page)
     private void closePage() {
-        createFolderPage createFolderPage = new createFolderPage(stage, flashQuestController);
-        createFolderPage.show();
+        if (folder != null) {
+            smithCard SmithCard = new smithCard(stage, flashQuestController, folder);
+            SmithCard.show();
+        }
+        else {
+            createFolderPage createFolderPage = new createFolderPage(stage, flashQuestController);
+            createFolderPage.show();
+        }
     }
 }
