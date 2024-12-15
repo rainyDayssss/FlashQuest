@@ -125,6 +125,8 @@ public class createFolderPage {
             }
             else {
                 notificationText.setText("Folder has been created successfully!");
+                notificationText.setVisible(true);
+                controller.clickCreateFolderButton(questionField.getText());
                 questionField.setText("");
             }
             notificationText.setVisible(true);

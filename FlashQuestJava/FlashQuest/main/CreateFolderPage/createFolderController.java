@@ -34,13 +34,15 @@ public class createFolderController {
         // TODO HAGGAIIII
     }
 
-    public void clickCreateFolderButton() {
-        createFolderPage Smithfolder = new createFolderPage(stage, flashQuestController); // stay on the same page
+    // CREATE FOLDER BTN
+    public void clickCreateFolderButton(String folderName) {
+        // stay on the same page
         System.out.println("Folder has been created");
-        //folder Folder = new folder(stage, flashQuestController);
-        //Folder.show();
-        Smithfolder.show();
+        // TODO create folder
+        flashQuestController.addFolder(folderName);
     }
+
+    // CHOOSE FOLDER BTN
     public void clickFolderButton() {
         folder Folder = new folder(stage, flashQuestController);
         Folder.show();
