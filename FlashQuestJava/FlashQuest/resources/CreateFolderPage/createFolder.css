@@ -1,0 +1,119 @@
+/* Sidebar container */
+.Title {
+    -fx-font-size: 50px; /* Set font size */
+    -fx-fill: #FFCF0E; /* Set font color */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-alignment: center-top;
+}
+.description {
+    -fx-font-size: 15px; /* Set font size */
+    -fx-fill: #FFFFFF; /* Set font color */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+}
+.question {
+    -fx-font-size: 20px; /* Set font size */
+    -fx-fill: #FFFFFF; /* Set font color */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+}
+.placeholder {
+    -fx-font-size: 15px; /* Set font size */
+    -fx-prompt-text-fill: #494949;
+    -fx-font-family: "VCR OSD MONO";
+    -fx-font-position: center;
+    -fx-background-color: rgba(255, 255, 255, 0.65);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5px;
+}
+
+.signUp {
+    -fx-background-color: #DBB20E; /* Set button background color */
+    -fx-text-fill: white; /* Set button text color */
+    -fx-font-size: 20px; /* Set button text font size */
+    -fx-padding: 20px 65px; /* Add padding inside the button */
+    -fx-border-radius: 5px; /* Rounded corners for the button */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-background-radius: 5;
+
+}
+.create-button{
+    -fx-text-fill: #ecf0f1; /* Light gray text */
+    -fx-font-size: 15px;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-background-color: #492317;
+    -fx-cursor: hand;
+
+}
+.folder-button{
+    -fx-text-fill: #ecf0f1; /* Light gray text */
+    -fx-font-size: 15px;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-background-color: #0A0A0A;
+    -fx-cursor: hand;
+
+}
+.login {
+    -fx-text-transform: uppercase;
+    -fx-background-color: #3CB878; /* Set button background color */
+    -fx-text-fill: white; /* Set button text color */
+    -fx-font-size: 20px; /* Set button text font size */
+    -fx-padding: 20px 65px; /* Add padding inside the button */
+    -fx-border-radius: 5px; /* Rounded corners for the button */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-background-radius: 5;
+
+
+}
+.sidebar {
+    -fx-background-color: rgba(100,100,100,0.8); /* Dark blue background */
+    -fx-padding: 20;
+    -fx-spacing: 20; /* Space between menu items */
+}
+.text {
+    -fx-alignment: center;
+    -fx-font-family: "VCR OSD MONO";
+}
+/* Menu buttons */
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1; /* Light gray text */
+    -fx-font-size: 15px;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+}
+.folder-button:hover {
+    -fx-background-color: #C19A19;
+}
+.create-button:hover {
+    -fx-background-color: #C19A19;
+}
+/* Hover effect for menu buttons */
+.menu-button:hover {
+    -fx-background-color: #C19A19;
+}
+
+/* Focused or selected menu buttons */
+.folder-button:pressed {
+    -fx-background-color: #58470E;
+}
+.create-button:pressed {
+    -fx-background-color: #58470E;
+}
+.menu-button:pressed {
+    -fx-background-color: #58470E;
+}
+
+.notification-label {
+    -fx-text-fill: #4CAF50; /* Green color for success */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

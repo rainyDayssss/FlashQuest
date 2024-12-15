@@ -1,0 +1,22 @@
+.Title {
+    -fx-font-size: 60px; /* Set font size */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-padding: 20px; /* Add padding around the text */
+}
+.description {
+    -fx-font-size: 20;
+    -fx-font-family: "VCR OSD MONO";
+}
+.classes{
+    -fx-background-color: transparent;  /* Make sure the background is transparent */
+    -fx-background-radius: 5;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+.classes:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 40, 0.5, 0, 0); /* Optional hover effect */
+}
+.classes:pressed {
+    -fx-opacity: 0.8;  /* Reduce opacity slightly when pressed */
+    -fx-background-color: transparent;   /* Keep the background transparent */
+}

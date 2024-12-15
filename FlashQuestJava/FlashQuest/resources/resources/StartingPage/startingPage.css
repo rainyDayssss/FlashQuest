@@ -1,0 +1,49 @@
+
+@font-face {
+    font-family: "VCR OSD MONO";
+    src: url("VCR-OSD-MONO.ttf") format("truetype");
+}
+.Title {
+    -fx-font-size: 110px; /* Set font size */
+    -fx-fill: #FFCF0E; /* Set font color */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+}
+.description {
+    -fx-font-size: 17px; /* Set font size */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+}
+
+.signUp {
+    -fx-background-color: #DBB20E; /* Set button background color */
+    -fx-text-fill: white; /* Set button text color */
+    -fx-font-size: 20px; /* Set button text font size */
+    -fx-padding: 20px 60px; /* Add padding inside the button */
+    -fx-border-radius: 7px; /* Rounded corners for the button */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-background-radius: 7;
+    -fx-cursor: hand;
+}
+.login {
+    -fx-text-transform: uppercase;
+    -fx-background-color: #3CB878; /* Set button background color */
+    -fx-text-fill: white; /* Set button text color */
+    -fx-font-size: 20px; /* Set button text font size */
+    -fx-padding: 20px 60px; /* Add padding inside the button */
+    -fx-border-radius: 7px; /* Rounded corners for the button */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+    -fx-background-radius: 7;
+    -fx-cursor: hand;
+}
+
+.signUp:hover {
+    -fx-background-color: #CBA613; /* Darken button background when hovered */
+}
+.signUp:pressed {
+    -fx-background-color: #AB8D17;
+}
+.login:hover {
+    -fx-background-color: #0F9650; /* Background color on hover */
+}
+.login:pressed {
+    -fx-background-color: #0D7D43; /* Background color when pressed */
+}

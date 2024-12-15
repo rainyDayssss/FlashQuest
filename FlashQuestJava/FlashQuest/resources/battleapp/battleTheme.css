@@ -1,0 +1,55 @@
+#questionLabel {
+    -fx-background-color: #1d1d1d; /* Dark background */
+    -fx-text-fill: #f5f5f5; /* Light text color */
+    -fx-font-family: "Verdana"; /* Immersive font */
+    -fx-font-size: 18px;
+    -fx-padding: 10; /* Add some padding */
+    -fx-border-color: #00ffff; /* Glowing cyan border */
+    -fx-border-width: 3;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0.5, 0, 0); /* Glow effect */
+}
+
+#submitButton, #retreatLabel {
+    -fx-background-color: linear-gradient(#444444, #222222); /* Metallic gradient */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-family: "Verdana";
+    -fx-font-size: 16px;
+    -fx-border-color: #ff4500; /* Fiery red border */
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, #ff4500, 10, 0.5, 0, 0); /* Glow effect */
+    -fx-padding: 8 15; /* Padding for a button look */
+}
+
+#submitButton:hover, #retreatLabel:hover {
+    -fx-background-color: linear-gradient(#666666, #444444); /* Brighten on hover */
+    -fx-cursor: hand; /* Change cursor */
+    -fx-effect: dropshadow(gaussian, #ff6b3b, 15, 0.7, 0, 0); /* Intense glow on hover */
+}
+
+#resultLabel {
+    -fx-text-fill: white; /* Neutral text color */
+    -fx-font-family: "Georgia";
+    -fx-font-size: 20px;
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    -fx-padding: 5 10;
+    -fx-border-radius: 5;
+    -fx-alignment: center;
+}
+
+#answerField {
+    -fx-background-color: #2a2a2a; /* Dark gray background */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-border-color: #00ffff; /* Glowing cyan border */
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-font-size: 16px;
+    -fx-padding: 5;
+    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0.5, 0, 0); /* Glow effect */
+}
+
+#answerField:focused {
+    -fx-border-color: #00ff00; /* Green glow when focused */
+    -fx-effect: dropshadow(gaussian, #00ff00, 10, 0.7, 0, 0);
+}
