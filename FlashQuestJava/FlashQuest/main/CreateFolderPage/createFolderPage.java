@@ -7,6 +7,7 @@ import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.layout.Pane;  // Use Pane for free positioning
 import javafx.scene.text.Font;
@@ -102,10 +103,15 @@ public class createFolderPage {
         createButton.setPrefWidth(200);
         createButton.setPrefHeight(50);
 
-        Button folderButton = new Button(" Folders ");
+        Button folderButton = new Button(" Choose folder ");
         folderButton.getStyleClass().add("folder-button");
         folderButton.setPrefWidth(200);
         folderButton.setPrefHeight(50);
+
+        Tooltip folderButtonTooltip = new Tooltip("Click to choose a folder \nand start creating Smithcards!");
+        folderButtonTooltip.setShowDelay(Duration.seconds(0.1));
+        Tooltip.install(folderButton, folderButtonTooltip);
+
 
         // Notification text
         Text notificationText = new Text();
@@ -115,7 +121,7 @@ public class createFolderPage {
         // Button actions
         createButton.setOnAction(e -> {
             if (questionField.getText().isEmpty()) {
-                notificationText.setText("Cannot have empty folder name!");
+                notificationText.setText("Cannot create with empty folder name!");
             }
             else {
                 notificationText.setText("Folder has been created successfully!");

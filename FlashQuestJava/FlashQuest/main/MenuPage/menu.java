@@ -16,8 +16,6 @@ import javafx.application.Application;
 import javafx.scene.control.ScrollPane;
 
 public class menu{
-    double currentEXP = 0.4;
-    double levelEXP = 1.0;
     private Stage stage;
     private FlashQuestController flashQuestController;
 
@@ -184,7 +182,9 @@ public class menu{
 
         //for the userIcon or pfp based on what class the user has chosen
         //example "1" represents as a "Warrior"
-        ImageView userPfp = userIcon("1");
+
+        // TODO here is the identifier
+        ImageView userPfp = userIcon(flashQuestController.getUser().getAvatarObject().getAvatarName().toLowerCase());
 
         VBox questLayout = new VBox(5);
         questLayout.setAlignment(Pos.TOP_CENTER);
@@ -282,14 +282,14 @@ public class menu{
         Image mage = new Image(getClass().getResource("Mage.gif").toExternalForm());
         Image tank = new Image(getClass().getResource("Tank.gif").toExternalForm());
 
-        if (classes.equals("1")) {
+        if (classes.equals("warrior")) {
             ImageView warriorView = new ImageView(warrior);
             warriorView.setTranslateX(220);
             warriorView.setTranslateY(30);
             warriorView.setFocusTraversable(false); // Prevent focus on questLayout
             return warriorView;
         }
-        else if (classes.equals("2")) {
+        else if (classes.equals("mage")) {
             ImageView mageView = new ImageView(mage);
             mageView.setTranslateX(200);
             mageView.setTranslateY(30);

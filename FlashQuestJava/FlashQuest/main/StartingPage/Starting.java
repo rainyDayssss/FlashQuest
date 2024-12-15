@@ -17,6 +17,10 @@ import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
+// TODO populate folder and flashcard data
+// TODO add folder
+// TODO add flashcard
+// TODO view and edit btm
 public class Starting extends Application {
     @Override
     public void start(Stage stage) throws IOException {

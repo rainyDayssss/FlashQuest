@@ -62,7 +62,7 @@ public class smithCard{
         smithCardButton.getStyleClass().add("menu-button");
         Button questButton = sideBarIcons("Quest", quest, 40, 40);
         questButton.getStyleClass().add("menu-button");
-        Button userButton = sideBarIcons("Zyche", user, 30, 40);
+        Button userButton = sideBarIcons(flashQuestController.getUser().getUsername(), user, 30, 40);
         userButton.getStyleClass().add("menu-button");
 
         smithCardController controller = new smithCardController(stage, flashQuestController);
