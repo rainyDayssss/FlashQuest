@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DucayQuest.iml" filepath="$PROJECT_DIR$/.idea/DucayQuest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlashQuestJava/FlashQuestJava.iml" filepath="$PROJECT_DIR$/FlashQuestJava/FlashQuestJava.iml" />
     </modules>
   </component>
 </project>

@@ -8,8 +8,6 @@ import MenuPage.menu;
 import QuestPage.quest;
 import javafx.stage.Stage;
 
-
-
 public class createFolderController {
     private final Stage stage;
     private final FlashQuestController flashQuestController;
@@ -18,18 +16,21 @@ public class createFolderController {
         this.stage = stage;
         this.flashQuestController = flashQuestController;
     }
+
     public void clickMenuButton() {
-        menu Menu = new menu(stage, flashQuestController);
-        Menu.show();
+        transitionToMenu();
     }
+
     public void clickSmithFolderButton() {
         createFolderPage Smithfolder = new createFolderPage(stage, flashQuestController);
         Smithfolder.show();
     }
+
     public void clickQuestButton() {
         quest Quest = new quest(stage, flashQuestController);
         Quest.show();
     }
+
     public void clickUserButton() {
         // TODO HAGGAIIII
     }
@@ -46,5 +47,10 @@ public class createFolderController {
     public void clickFolderButton() {
         folder Folder = new folder(stage, flashQuestController);
         Folder.show();
+    }
+
+    private void transitionToMenu() {
+        menu Menu = new menu(stage, flashQuestController);
+        Menu.show();
     }
 }

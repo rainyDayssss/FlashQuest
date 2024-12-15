@@ -6,8 +6,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.Objects;
-
 public class SignUpController {
     private final Stage stage;
     private final TextField usernameField;
@@ -35,7 +33,6 @@ public class SignUpController {
         String username = usernameField.getText();
         String email = emailField.getText(); // should be username
         String password = passwordField.getText();
-        // Get the text from username and password fields
 
         if (!username.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
             System.out.println("Username: " + username);
@@ -45,11 +42,10 @@ public class SignUpController {
             // Sign Up Logic
             flashQuestController.signUP(email, password, username);
 
-            loginPage loginPage1 = new loginPage(stage, flashQuestController);  //Appears if done signing uup
+            loginPage loginPage1 = new loginPage(stage, flashQuestController);  // Appears if done signing up
             loginPage1.show();  // Show the LoginPage
-        }
-        else {
-            System.out.println("There was an error try again");
+        } else {
+            System.out.println("There was an error, try again");
         }
     }
 }
