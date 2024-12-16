@@ -43,14 +43,14 @@ public class AccountPage
 
         //Import Images
         Image backgroundPic = loadImage("/AccountPage/Background.gif");
-        Image firstBadgeLocked = loadImage("/AccountPage/1st_Badge.png");
-        Image secondBadgeLocked = loadImage("/AccountPage/2nd_Badge.png");
-        Image thirdBadgeLocked = loadImage("/AccountPage/3rd_Badge.png");
-        Image fourthBadgeLocked = loadImage("/AccountPage/4th_Badge.png");
-        Image fifthBadgeLocked = loadImage("/AccountPage/5th_Badge.png");
-        Image sixthBadgeLocked = loadImage("/AccountPage/6th_Badge.png");
-        Image seventhBadgeLocked = loadImage("/AccountPage/7th_Badge.png");
-        Image eighthBadgeLocked = loadImage("/AccountPage/8th_Badge.png");
+        Image firstBadgeUnlocked = loadImage("/AccountPage/1st_Badge.png");
+        Image secondBadgeUnlocked = loadImage("/AccountPage/2nd_Badge.png");
+        Image thirdBadgeUnlocked = loadImage("/AccountPage/3rd_Badge.png");
+        Image fourthBadgeUnlocked = loadImage("/AccountPage/4th_Badge.png");
+        Image fifthBadgeUnlocked = loadImage("/AccountPage/5th_Badge.png");
+        Image sixthBadgeUnlocked = loadImage("/AccountPage/6th_Badge.png");
+        Image seventhBadgeUnlocked = loadImage("/AccountPage/7th_Badge.png");
+        Image eighthBadgeUnlocked = loadImage("/AccountPage/8th_Badge.png");
         Image menu = loadImage("/AccountPage/Content.png");
         Image note = loadImage("/AccountPage/Note.png");
         Image quest = loadImage("/AccountPage/Quest.png");
@@ -177,22 +177,22 @@ public class AccountPage
         achievementsRectangle.setMouseTransparent(true);
 
         // Convert the image to grayscale
-        assert firstBadgeLocked != null;
-        Image firstBadgeGrayscale = convertToGrayscale(firstBadgeLocked);
-        assert secondBadgeLocked != null;
-        Image secondBadgeGrayscale = convertToGrayscale(secondBadgeLocked);
-        assert thirdBadgeLocked != null;
-        Image thirdBadgeGrayscale = convertToGrayscale(thirdBadgeLocked);
-        assert fourthBadgeLocked != null;
-        Image fourthBadgeGrayscale = convertToGrayscale(fourthBadgeLocked);
-        assert fifthBadgeLocked != null;
-        Image fifthBadgeGrayscale = convertToGrayscale(fifthBadgeLocked);
-        assert sixthBadgeLocked != null;
-        Image sixthBadgeGrayscale = convertToGrayscale(sixthBadgeLocked);
-        assert seventhBadgeLocked != null;
-        Image seventhBadgeGrayscale = convertToGrayscale(seventhBadgeLocked);
-        assert eighthBadgeLocked != null;
-        Image eighthBadgeGrayscale = convertToGrayscale(eighthBadgeLocked);
+        assert firstBadgeUnlocked != null;
+        Image firstBadgeGrayscale = convertToGrayscale(firstBadgeUnlocked);
+        assert secondBadgeUnlocked != null;
+        Image secondBadgeGrayscale = convertToGrayscale(secondBadgeUnlocked);
+        assert thirdBadgeUnlocked != null;
+        Image thirdBadgeGrayscale = convertToGrayscale(thirdBadgeUnlocked);
+        assert fourthBadgeUnlocked != null;
+        Image fourthBadgeGrayscale = convertToGrayscale(fourthBadgeUnlocked);
+        assert fifthBadgeUnlocked != null;
+        Image fifthBadgeGrayscale = convertToGrayscale(fifthBadgeUnlocked);
+        assert sixthBadgeUnlocked != null;
+        Image sixthBadgeGrayscale = convertToGrayscale(sixthBadgeUnlocked);
+        assert seventhBadgeUnlocked != null;
+        Image seventhBadgeGrayscale = convertToGrayscale(seventhBadgeUnlocked);
+        assert eighthBadgeUnlocked != null;
+        Image eighthBadgeGrayscale = convertToGrayscale(eighthBadgeUnlocked);
 
         // Create ImageView for the grayscale badge
         ImageView firstBadge = new ImageView(firstBadgeGrayscale);
@@ -233,12 +233,12 @@ public class AccountPage
         fourthBadgeButton.getTooltip().setShowDelay(Duration.seconds(0.1));
 
 
-        ImageView fifthBadge = new ImageView(fifthBadgeGrayscale);
+        ImageView fifthBadge = new ImageView(fifthBadgeUnlocked);
         fifthBadge.setFitWidth(150);
         fifthBadge.setFitHeight(150);
 
-        Button fifthBadgeButton = createImageButton(fifthBadgeGrayscale, 150, 150);
-        fifthBadgeButton.setTooltip(new Tooltip("Fifth Medal, Locked\nMust login for the 2nd time"));
+        Button fifthBadgeButton = createImageButton(fifthBadgeUnlocked, 150, 150);
+        fifthBadgeButton.setTooltip(new Tooltip("Fifth Medal, Unlocked\nMust login for the 1st time!"));
         fifthBadgeButton.setOnAction(e -> System.out.println("Fifth Badge"));
         fifthBadgeButton.getTooltip().setShowDelay(Duration.seconds(0.1));
 
@@ -260,13 +260,24 @@ public class AccountPage
         seventhBadgeButton.setOnAction(e -> System.out.println("Seventh Badge"));
         seventhBadgeButton.getTooltip().setShowDelay(Duration.seconds(0.1));
 
-        ImageView eigthBadge = new ImageView(eighthBadgeGrayscale);
-        eigthBadge.setFitWidth(150);
-        eigthBadge.setFitHeight(150);
+        Button eigthBadgeButton;
+        boolean isEighthBadgeUnlocked = flashQuestController.isEighthBadgeUnlocked();
+        if(!isEighthBadgeUnlocked) {
+            ImageView eigthBadge = new ImageView(eighthBadgeGrayscale);
+            eigthBadge.setFitWidth(150);
+            eigthBadge.setFitHeight(150);
 
-        Button eigthBadgeButton = createImageButton(eighthBadgeGrayscale, 150, 150);
-        eigthBadgeButton.setTooltip(new Tooltip("Eigth Medal, Locked\nMust find the hidden button"));
-        eigthBadgeButton.setOnAction(e -> System.out.println("Eigth Badge"));
+            eigthBadgeButton = createImageButton(eighthBadgeGrayscale, 150, 150);
+            eigthBadgeButton.setTooltip(new Tooltip("Eighth Medal, Locked\nMust find the hidden button"));
+        }
+        else{
+            ImageView eigthBadge = new ImageView(eighthBadgeUnlocked);
+            eigthBadge.setFitWidth(150);
+            eigthBadge.setFitHeight(150);
+
+            eigthBadgeButton = createImageButton(eighthBadgeUnlocked, 150, 150);
+            eigthBadgeButton.setTooltip(new Tooltip("Eighth Medal, Unlocked\nYou have found the hidden button!"));
+        }
         eigthBadgeButton.getTooltip().setShowDelay(Duration.seconds(0.1));
 
         // Create HBox for horizontal arrangement of badges
