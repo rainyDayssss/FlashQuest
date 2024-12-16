@@ -144,7 +144,7 @@ public class CreditsPage
             Text part8 = new Text("And thank you to Sir Jewel Cedrick Gesim \nfor being our OOP teacher this semester");
             part8.setFont(vcrFont);
             part8.setFill(Color.WHITE);
-            part8.setTranslateY(30);
+            part8.setTranslateY(50);
 
             // Use a VBox to layout the text nodes
             VBox creditsTextLayout = new VBox(20); // Spacing between elements
@@ -174,13 +174,20 @@ public class CreditsPage
             backButton.setTranslateY(-40);
             backButton.setOnAction(e -> controller.clickBackButton());
 
+            Button hiddenButton = new Button("Hidden Button");
+            hiddenButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;");
+            hiddenButton.setOnAction(e -> controller.clickHiddenButton());
+            hiddenButton.setTranslateX(330);
+            hiddenButton.setTranslateY(-115);
+
             // Main Layout
-            StackPane creditsLayout = new StackPane(background, sidebar, creditsTextLayout, ducay, talisic, backButton);
+            StackPane creditsLayout = new StackPane(background, sidebar, creditsTextLayout, ducay, talisic, backButton, hiddenButton);
             StackPane.setAlignment(sidebar, Pos.TOP_LEFT);
             StackPane.setAlignment(creditsTextLayout, Pos.TOP_CENTER);
             StackPane.setAlignment(ducay, Pos.CENTER);
             StackPane.setAlignment(backButton, Pos. BOTTOM_CENTER);
             StackPane.setAlignment(talisic, Pos. TOP_CENTER);
+            StackPane.setAlignment(hiddenButton, Pos.CENTER);
 
             // Scene
             Scene scene = new Scene(creditsLayout, 1280, 620);
@@ -205,3 +212,4 @@ public class CreditsPage
             return button;
         }
     }
+}
