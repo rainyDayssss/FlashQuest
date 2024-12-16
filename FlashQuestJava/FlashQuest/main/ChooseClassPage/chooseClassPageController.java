@@ -4,8 +4,6 @@ import Backend.Controller.FlashQuestController;
 import MenuPage.menu;
 import javafx.stage.Stage;
 
-
-
 public class chooseClassPageController {
     private final Stage stage;
     private final FlashQuestController flashQuestController;
@@ -18,18 +16,20 @@ public class chooseClassPageController {
     public void clickWarriorBtn() {
         // Warrior logic
         flashQuestController.chooseWarrior();
-        menu Menu = new menu(stage, flashQuestController);
-        Menu.show();
+        transitionToMenu();
     }
 
     public void clickMageBtn() {
         flashQuestController.chooseMage();
-        menu Menu = new menu(stage, flashQuestController);
-        Menu.show();
+        transitionToMenu();
     }
 
     public void clickTankBtn() {
         flashQuestController.chooseTank();
+        transitionToMenu();
+    }
+
+    private void transitionToMenu() {
         menu Menu = new menu(stage, flashQuestController);
         Menu.show();
     }

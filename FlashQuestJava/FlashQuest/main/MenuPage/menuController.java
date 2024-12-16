@@ -14,29 +14,35 @@ public class menuController {
         this.stage = stage;
         this.flashQuestController = flashQuestController;
     }
+
     public void clickMenuButton() {
-        menu Menu = new menu(stage, flashQuestController);
-        Menu.show();
+        transitionToMenu();
     }
 
-    // create smith folder and card
     public void clickSmithFolderButton() {
-        createFolderPage Smithfolder = new createFolderPage(stage, flashQuestController);
-        Smithfolder.show();
+        transitionToCreateFolderPage();
     }
 
     public void clickQuestButton() {
-        quest Quest = new quest(stage, flashQuestController);
-        Quest.show();
+        transitionToQuestPage();
     }
 
     public void clickUserButton() {
         // TODO HAGGAI
     }
-    public void clickStartButton(Folder folder) {
 
+    private void transitionToMenu() {
+        menu Menu = new menu(stage, flashQuestController);
+        Menu.show();
     }
-    public void clickViewButton(Folder folder) {
 
+    private void transitionToCreateFolderPage() {
+        createFolderPage Smithfolder = new createFolderPage(stage, flashQuestController);
+        Smithfolder.show();
+    }
+
+    private void transitionToQuestPage() {
+        quest Quest = new quest(stage, flashQuestController);
+        Quest.show();
     }
 }

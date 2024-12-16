@@ -13,7 +13,7 @@ public class LoginPageController {
     private final PasswordField passwordField;
     private final FlashQuestController flashQuestController;
 
-    public LoginPageController (Stage stage, TextField usernameField, PasswordField passwordField, FlashQuestController flashQuestController) {
+    public LoginPageController(Stage stage, TextField usernameField, PasswordField passwordField, FlashQuestController flashQuestController) {
         this.stage = stage;
         this.usernameField = usernameField;
         this.passwordField = passwordField;
@@ -25,15 +25,15 @@ public class LoginPageController {
         String password = passwordField.getText();
         if (!username.isEmpty() && !password.isEmpty()) {
             if (flashQuestController.logIn(username, password) != null) {
+                // Reuse the existing stage to transition smoothly
                 chooseClass classPage = new chooseClass(stage, flashQuestController);
                 classPage.show();
-            }
-            else
+            } else {
                 System.out.println("User was not found");
-        }
-        else
+            }
+        } else {
             System.out.println("Fields cannot be empty.");
-
+        }
     }
 
     public void onSignUpButtonClicked() {
