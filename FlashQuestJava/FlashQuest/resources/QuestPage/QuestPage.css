@@ -11,6 +11,13 @@
     -fx-fill: #FFFFFF; /* Set font color */
     -fx-font-family: "VCR OSD MONO"; /* Set font family */
 }
+
+.description2 {
+    -fx-font-size: 15px; /* Set font size */
+    -fx-fill: #FFAE00; /* Set font color */
+    -fx-font-family: "VCR OSD MONO"; /* Set font family */
+}
+
 .question {
     -fx-font-size: 20px; /* Set font size */
     -fx-fill: #FFFFFF; /* Set font color */

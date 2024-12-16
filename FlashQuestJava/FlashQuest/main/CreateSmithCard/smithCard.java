@@ -175,7 +175,7 @@ public class smithCard{
         title2.layoutXProperty().bind(Bindings.multiply(0.24, root1.widthProperty()));
         title2.layoutYProperty().bind(Bindings.multiply(0.22, root1.heightProperty()));
 
-        description.layoutXProperty().bind(Bindings.multiply(0.37, root1.widthProperty()));
+        description.layoutXProperty().bind(Bindings.multiply(0.30, root1.widthProperty()));
         description.layoutYProperty().bind(Bindings.multiply(0.35, root1.heightProperty()));
 
         question.layoutXProperty().bind(Bindings.multiply(0.32, root1.widthProperty()));

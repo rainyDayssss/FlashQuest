@@ -35,7 +35,7 @@ public class editingQuest {
     // TODO PROBLEM WITH HERE
     public void show() {
         Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
-        Image image = new Image(getClass().getResource("FlashCard.gif").toExternalForm());
+        Image image = new Image(getClass().getResource("QuestPage.gif").toExternalForm());
 
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
@@ -76,12 +76,16 @@ public class editingQuest {
         sidebar.getChildren().addAll(title, menuButton, smithCardButton, questButton, spacer, userButton);
 
         Button closeButton = new Button("X");
-        closeButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 5 10;");
+        closeButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 18px;");
+        closeButton.setPrefSize(40, 40);
         closeButton.setOnAction(e -> closePage());
 
         HBox topBar = new HBox(closeButton);
         topBar.setAlignment(Pos.TOP_RIGHT);
-        topBar.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
+        topBar.setPrefWidth(500);
+        topBar.setPrefHeight(40);
+        topBar.setStyle("-fx-background-color: transparent;");
+
 
         BorderPane root = new BorderPane();
         root.setLeft(sidebar);
@@ -97,7 +101,7 @@ public class editingQuest {
         title2.getStyleClass().add("Title");
 
         Text description = new Text("  This Smithcard will be saved to " + folder.getFolderName());
-        description.getStyleClass().add("description");
+        description.getStyleClass().add("description2");
 
         Text question = new Text("Question");
         question.getStyleClass().add("question");
@@ -116,7 +120,7 @@ public class editingQuest {
         answerField.getStyleClass().add("placeholder");
 
         Button saveBtn = new Button(" Save ");
-        saveBtn.getStyleClass().add("create-button");
+        saveBtn.getStyleClass().add("start-button");
         saveBtn.setPrefWidth(200);
         saveBtn.setPrefHeight(50);
 
@@ -125,8 +129,6 @@ public class editingQuest {
 
         saveBtn.setOnAction(e -> {
             if (!questionField.getText().isEmpty() && !answerField.getText().isEmpty()) {
-                notificationText.setText("Saved Smithcard!");
-                notificationText.setStyle("-fx-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: bold;");
                 controller.clickSaveBtn(questionField.getText(), answerField.getText(), folder, flashcard);
                 questionField.setText("");
                 answerField.setText("");
@@ -147,7 +149,7 @@ public class editingQuest {
         title2.layoutXProperty().bind(Bindings.multiply(0.24, root1.widthProperty()));
         title2.layoutYProperty().bind(Bindings.multiply(0.22, root1.heightProperty()));
 
-        description.layoutXProperty().bind(Bindings.multiply(0.37, root1.widthProperty()));
+        description.layoutXProperty().bind(Bindings.multiply(0.30, root1.widthProperty()));
         description.layoutYProperty().bind(Bindings.multiply(0.35, root1.heightProperty()));
 
         question.layoutXProperty().bind(Bindings.multiply(0.32, root1.widthProperty()));
@@ -162,15 +164,15 @@ public class editingQuest {
         answerField.layoutXProperty().bind(Bindings.multiply(0.32, root1.widthProperty()));
         answerField.layoutYProperty().bind(Bindings.multiply(0.57, root1.heightProperty()));
 
-        saveBtn.layoutXProperty().bind(Bindings.multiply(0.29, root1.widthProperty()));
+        saveBtn.layoutXProperty().bind(Bindings.multiply(0.41, root1.widthProperty()));
         saveBtn.layoutYProperty().bind(Bindings.multiply(0.67, root1.heightProperty()));
 
-        notificationText.layoutXProperty().bind(Bindings.multiply(0.38, root1.widthProperty()));
+        notificationText.layoutXProperty().bind(Bindings.multiply(0.35, root1.widthProperty()));
         notificationText.layoutYProperty().bind(Bindings.multiply(0.80, root1.heightProperty()));
 
         // Scene
         Scene scene = new Scene(root, 1280, 620);
-        String css = this.getClass().getResource("createSmithCard.css").toExternalForm();
+        String css = this.getClass().getResource("QuestPage.css").toExternalForm();
         scene.getStylesheets().add(css);
 
         // Set up the stage

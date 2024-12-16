@@ -31,10 +31,9 @@ public class editingQuestController {
         // TODO HAGGAI
     }
 
-
     public void clickSaveBtn(String newQuestion, String newAnswer, Folder folder, Flashcard flashcard) {
         flashQuestController.editFlashcardByFolderIdAndFlashcardId(newQuestion, newAnswer, folder, flashcard);
-        editingQuest EditingQuestPage = new editingQuest(stage, flashQuestController, folder, flashcard);
-        EditingQuestPage.show();
+        editQuest EditQuestPage = new editQuest(stage, flashQuestController, folder);
+        EditQuestPage.show();
     }
 }
