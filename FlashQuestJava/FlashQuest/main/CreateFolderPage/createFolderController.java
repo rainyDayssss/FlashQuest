@@ -1,5 +1,6 @@
 package CreateFolderPage;
 
+import AccountPage.AccountPage;
 import Backend.Controller.FlashQuestController;
 import CreateFolderPage.createFolderPage;
 import CreateSmithCard.smithCard;
@@ -33,6 +34,8 @@ public class createFolderController {
 
     public void clickUserButton() {
         // TODO HAGGAIIII
+        AccountPage accountPage = new AccountPage(stage, flashQuestController);
+        accountPage.show();
     }
 
     // CREATE FOLDER BTN

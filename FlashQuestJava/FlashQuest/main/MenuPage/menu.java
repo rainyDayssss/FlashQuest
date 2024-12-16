@@ -26,10 +26,10 @@ public class menu{
     }
     public void show() {
         // Load the background image
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
 
         //Background fill
-        Image image = new Image(getClass().getResource("MenuPage.gif").toExternalForm());
+        Image image = new Image(getClass().getResource("/MenuPage/MenuPage.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.35);
@@ -237,7 +237,7 @@ public class menu{
         scene.getStylesheets().add(css);
 
         // Set up the stage
-        stage.setTitle("Create a SmithCard");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

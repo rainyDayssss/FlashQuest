@@ -1,9 +1,12 @@
 package LoginPage;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Avatar;
+import MenuPage.menu;
 import SignUpPage.signUp;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import ChooseClassPage.chooseClass;
 
@@ -12,11 +15,13 @@ public class LoginPageController {
     private final TextField usernameField;
     private final PasswordField passwordField;
     private final FlashQuestController flashQuestController;
+    private final Text errorMessage;
 
-    public LoginPageController(Stage stage, TextField usernameField, PasswordField passwordField, FlashQuestController flashQuestController) {
+    public LoginPageController(Stage stage, TextField usernameField, PasswordField passwordField, FlashQuestController flashQuestController, Text errorMessage) {
         this.stage = stage;
         this.usernameField = usernameField;
         this.passwordField = passwordField;
+        this.errorMessage = errorMessage;
         this.flashQuestController = flashQuestController;
     }
 
@@ -25,14 +30,25 @@ public class LoginPageController {
         String password = passwordField.getText();
         if (!username.isEmpty() && !password.isEmpty()) {
             if (flashQuestController.logIn(username, password) != null) {
-                // Reuse the existing stage to transition smoothly
-                chooseClass classPage = new chooseClass(stage, flashQuestController);
-                classPage.show();
+                Avatar avatar;
+                // This is for the already chosen their avatar in their account
+                if ((avatar = flashQuestController.getUser().getAvatarObject()) != null) {
+                    menu MenuPage = new menu(stage, flashQuestController);
+                    MenuPage.show();
+                }
+                else {
+                    // Reuse the existing stage to transition smoothly
+                    chooseClass classPage = new chooseClass(stage, flashQuestController);
+                    classPage.show();
+                    errorMessage.setVisible(false);
+                }
             } else {
-                System.out.println("User was not found");
+                errorMessage.setText("User was not found.");
+                errorMessage.setVisible(true);
             }
         } else {
-            System.out.println("Fields cannot be empty.");
+            errorMessage.setText("Fields cannot be empty.");
+            errorMessage.setVisible(true);
         }
     }
 

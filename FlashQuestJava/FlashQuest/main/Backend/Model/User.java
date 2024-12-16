@@ -4,7 +4,7 @@ public class User {
     private final String username;
     private final String email;
     private final String password;
-    private Avatar avatar;
+    private Avatar avatar; // will be null  if has not yet chosen an avatar
     private final FolderStorage folderStorage;
     private final BadgeStorage badgeStorage; // TODO on this, can get badge base on the total num of correct flashcards among others
 

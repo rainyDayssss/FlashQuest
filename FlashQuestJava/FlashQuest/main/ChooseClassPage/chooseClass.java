@@ -24,7 +24,7 @@ public class chooseClass {
     public void show() {
         chooseClassPageController controller = new chooseClassPageController(stage, flashQuestController);
 
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
         // Load the background image
         Image image = new Image(getClass().getResource("classPage.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
@@ -108,6 +108,10 @@ public class chooseClass {
         Scene scene = new Scene(root, 1280, 620);
         String css = this.getClass().getResource("/ChooseClassPage/chooseClass.css").toExternalForm();
         scene.getStylesheets().add(css);
+
+        Image icon = new Image(getClass().getResource("/SignUpPage/final.png").toExternalForm());
+        stage.getIcons().clear();
+        stage.getIcons().add(icon);
 
         // Set up the stage
         stage.setTitle("FlashQuest");

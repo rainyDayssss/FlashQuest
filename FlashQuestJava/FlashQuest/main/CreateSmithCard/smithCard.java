@@ -39,8 +39,8 @@ public class smithCard{
     }
     public void show() {
         // Load the background image
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
-        Image image = new Image(getClass().getResource("FlashCard.gif").toExternalForm());
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Image image = new Image(getClass().getResource("/CreateFolderPage/FlashCard.gif").toExternalForm());
 
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
@@ -204,8 +204,12 @@ public class smithCard{
         String css = this.getClass().getResource("createSmithCard.css").toExternalForm();
         scene.getStylesheets().add(css);
 
+        Image icon = new Image(getClass().getResource("/SignUpPage/final.png").toExternalForm());
+        stage.getIcons().clear();
+        stage.getIcons().add(icon);
+
         // Set up the stage
-        stage.setTitle("Create a SmithCard");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

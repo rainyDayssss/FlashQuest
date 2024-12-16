@@ -32,8 +32,8 @@ public class quest {
     }
     public void show() {
         questController controller = new questController(stage, flashQuestController);
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
-        Image image = new Image(getClass().getResource("QuestPage.gif").toExternalForm());
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Image image = new Image(getClass().getResource("/QuestPage/QuestPage.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.35);
@@ -125,7 +125,7 @@ public class quest {
         scene.getStylesheets().add(css);
 
         // Set up the stage
-        stage.setTitle("Quest Page");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

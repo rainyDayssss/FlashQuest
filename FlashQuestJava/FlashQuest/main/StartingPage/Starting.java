@@ -12,7 +12,6 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.io.IOException;
 
 // TODO populate folder and flashcard data
@@ -24,7 +23,7 @@ public class Starting extends Application {
     public void start(Stage stage) throws IOException {
         //Initializing constructor for controller
         StartingPageController controller = new StartingPageController(stage);
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
 
         // Load the background image
         Image image = new Image(getClass().getResource("StartingPage.gif").toExternalForm());
@@ -77,6 +76,10 @@ public class Starting extends Application {
         scene.getStylesheets().add(css);
 
         // Set up the stage
+        Image icon = new Image(getClass().getResource("/SignUpPage/final.png").toExternalForm());
+        stage.getIcons().clear();
+        stage.getIcons().add(icon);
+
         stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);

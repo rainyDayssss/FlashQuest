@@ -4,6 +4,7 @@ import Backend.Controller.FlashQuestController;
 import LoginPage.loginPage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SignUpController {
@@ -12,13 +13,15 @@ public class SignUpController {
     private final TextField emailField;
     private final PasswordField passwordField;
     private final FlashQuestController flashQuestController;
+    private final Text errorMessage;
 
     // Constructor to pass the Stage and UI components
-    public SignUpController(Stage stage, TextField emailField, TextField usernameField, PasswordField passwordField, FlashQuestController flashQuestController) {
+    public SignUpController(Stage stage, TextField emailField, TextField usernameField, PasswordField passwordField, FlashQuestController flashQuestController, Text errorMessage) {
         this.stage = stage;
         this.emailField = emailField;
         this.usernameField = usernameField;
         this.passwordField = passwordField;
+        this.errorMessage = errorMessage;
         this.flashQuestController = flashQuestController;
     }
 
@@ -45,7 +48,8 @@ public class SignUpController {
             loginPage loginPage1 = new loginPage(stage, flashQuestController);  // Appears if done signing up
             loginPage1.show();  // Show the LoginPage
         } else {
-            System.out.println("There was an error, try again");
+            errorMessage.setText("Fields cannot be empty."); // Set error text
+            errorMessage.setVisible(true); // Show error message
         }
     }
 }

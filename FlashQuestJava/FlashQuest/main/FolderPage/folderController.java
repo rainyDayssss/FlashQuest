@@ -1,5 +1,6 @@
 package FolderPage;
 
+import AccountPage.AccountPage;
 import Backend.Controller.FlashQuestController;
 import Backend.Model.Flashcard;
 import Backend.Model.Folder;
@@ -35,6 +36,8 @@ public class folderController {
 
     public void clickUserButton() {
         // TODO  HAGGAII
+        AccountPage accountPage = new AccountPage(stage, flashQuestController);
+        accountPage.show();
     }
 
     // TODO logic to add flashcards to that folder

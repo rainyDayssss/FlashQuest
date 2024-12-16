@@ -1,5 +1,6 @@
 package MenuPage;
 
+import AccountPage.AccountPage;
 import Backend.Controller.FlashQuestController;
 import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
@@ -29,6 +30,8 @@ public class menuController {
 
     public void clickUserButton() {
         // TODO HAGGAI
+        AccountPage accountPage = new AccountPage(stage, flashQuestController);
+        accountPage.show();
     }
 
     private void transitionToMenu() {
@@ -46,10 +49,12 @@ public class menuController {
         Quest.show();
     }
 
-    // TODO
+    // TODO ADD VIEW AND START IN THE NEW QUESTs
     public void clickViewButton(Folder folder) {
+
     }
 
     public void clickStartButton(Folder folder) {
+
     }
 }

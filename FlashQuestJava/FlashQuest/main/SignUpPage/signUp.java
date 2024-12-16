@@ -24,7 +24,7 @@ public class signUp {
         this.flashQuestController = flashQuestController;
     }
     public void show() {
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
         // Load the background image
         Image image = new Image(getClass().getResource("signUp.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
@@ -72,9 +72,13 @@ public class signUp {
 
         Button signUp = new Button("Sign up");
         signUp.getStyleClass().add("login");
+
+        Text errorMessage = new Text();
+        errorMessage.getStyleClass().add("error-message");
+        errorMessage.setVisible(false);
         // Use a Pane for manual positioning
         Pane root = new Pane();
-        root.getChildren().addAll(imageView, Title, description, userName, usernameField, email, emailText, password, passwordField, signUp, login); // Add image, title, and description
+        root.getChildren().addAll(imageView, Title, description, userName, usernameField, email, emailText, password, passwordField, signUp, login, errorMessage); // Add image, title, and description
 
         Title.layoutXProperty().bind(Bindings.multiply(0.34, root.widthProperty()));
         Title.layoutYProperty().bind(Bindings.multiply(0.27, root.heightProperty()));
@@ -103,7 +107,10 @@ public class signUp {
         signUp.layoutXProperty().bind(Bindings.multiply(0.34, root.widthProperty()));
         signUp.layoutYProperty().bind(Bindings.multiply(0.35, root.widthProperty()));
 
-        SignUpController controller = new SignUpController(stage, emailText, usernameField, passwordField, flashQuestController);
+        errorMessage.layoutXProperty().bind(Bindings.multiply(0.34, root.widthProperty()));
+        errorMessage.layoutYProperty().bind(Bindings.add(Bindings.multiply(0.30, root.heightProperty()), 255));
+
+        SignUpController controller = new SignUpController(stage, emailText, usernameField, passwordField, flashQuestController, errorMessage);
 
         signUp.setOnAction(e -> controller.onSignUpButtonClicked());
         login.setOnAction(e -> controller.onLoginButtonClicked());
@@ -113,8 +120,12 @@ public class signUp {
         String css = this.getClass().getResource("/SignUpPage/signUpPage.css").toExternalForm();
         scene.getStylesheets().add(css);
 
+        Image icon = new Image(getClass().getResource("/SignUpPage/final.png").toExternalForm());
+        stage.getIcons().clear();
+        stage.getIcons().add(icon);
+
         // Set up the stage
-        stage.setTitle("Sign Up");
+        stage.setTitle("FlashQuest - Sign Up");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -32,9 +32,9 @@ public class createFolderPage {
 
     public void show() {
         // Load the background image
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
 
-        Image image = new Image(getClass().getResource("FlashCard.gif").toExternalForm());
+        Image image = new Image(getClass().getResource("/CreateFolderPage/FlashCard.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.35);
@@ -169,8 +169,12 @@ public class createFolderPage {
         String css = this.getClass().getResource("createFolder.css").toExternalForm();
         scene.getStylesheets().add(css);
 
+        Image icon = new Image(getClass().getResource("/SignUpPage/final.png").toExternalForm());
+        stage.getIcons().clear();
+        stage.getIcons().add(icon);
+
         // Stage setup
-        stage.setTitle("Create a SmithCard");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

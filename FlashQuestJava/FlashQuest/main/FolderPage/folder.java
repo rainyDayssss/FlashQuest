@@ -34,8 +34,8 @@ public class folder {
     }
 
     public void show() {
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
-        Image image = new Image(getClass().getResource("FlashCard.gif").toExternalForm());
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Image image = new Image(getClass().getResource("/CreateFolderPage/FlashCard.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.35);
@@ -131,7 +131,11 @@ public class folder {
         String css = this.getClass().getResource("folderPage.css").toExternalForm();
         scene.getStylesheets().add(css);
 
-        stage.setTitle("Quest Page");
+        Image icon = new Image(getClass().getResource("/SignUpPage/final.png").toExternalForm());
+        stage.getIcons().clear();
+        stage.getIcons().add(icon);
+
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

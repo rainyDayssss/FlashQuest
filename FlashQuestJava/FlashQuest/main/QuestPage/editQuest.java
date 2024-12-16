@@ -31,8 +31,8 @@ public class editQuest {
     }
 
     public void show() {
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
-        Image image = new Image(getClass().getResource("QuestPage.gif").toExternalForm());
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Image image = new Image(getClass().getResource("/QuestPage/QuestPage.gif").toExternalForm());
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.35);
@@ -128,7 +128,7 @@ public class editQuest {
         String css = this.getClass().getResource("QuestPage.css").toExternalForm();
         scene.getStylesheets().add(css);
 
-        stage.setTitle("Flashcard Page");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -1,5 +1,6 @@
 package CreateSmithCard;
 
+import AccountPage.AccountPage;
 import Backend.Controller.FlashQuestController;
 import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
@@ -18,26 +19,25 @@ public class smithCardController {
         this.stage = stage;
         this.flashQuestController = flashQuestController;
     }
+
     public void clickMenuButton() {
         menu Menu = new menu(stage, flashQuestController);
         Menu.show();
     }
+
     public void clickSmithFolderButton() {
         createFolderPage Smithfolder = new createFolderPage(stage, flashQuestController);
         Smithfolder.show();
     }
+
     public void clickQuestButton() {
         quest Quest = new quest(stage, flashQuestController);
         Quest.show();
     }
+
     public void clickUserButton() {
-
-    }
-    public void clickStartButton() {
-
-    }
-    public void clickViewButton() {
-
+        AccountPage accountPage = new AccountPage(stage, flashQuestController);
+        accountPage.show();
     }
 
     // TODO

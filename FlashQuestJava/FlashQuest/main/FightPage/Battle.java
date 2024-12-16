@@ -24,7 +24,7 @@ public class Battle extends Application {
     private Stage stage;
     public void start(Stage stage) {
 
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
         // Load the background image
         Image image = new Image(getClass().getResource("fightScene.gif").toExternalForm());
         ImageView imageView = new ImageView(image);

@@ -34,8 +34,8 @@ public class editingQuest {
 
     // TODO PROBLEM WITH HERE
     public void show() {
-        Font vcrFont = Font.loadFont(getClass().getResource("VCR-OSD-MONO.ttf").toExternalForm(), 130);
-        Image image = new Image(getClass().getResource("QuestPage.gif").toExternalForm());
+        Font vcrFont = Font.loadFont(getClass().getResource("/StartingPage/VCR-OSD-MONO.ttf").toExternalForm(), 130);
+        Image image = new Image(getClass().getResource("/QuestPage/QuestPage.gif").toExternalForm());
 
         ImageView imageView = new ImageView(image);
         ColorAdjust colorAdjust = new ColorAdjust();
@@ -176,7 +176,7 @@ public class editingQuest {
         scene.getStylesheets().add(css);
 
         // Set up the stage
-        stage.setTitle("Create a SmithCard");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

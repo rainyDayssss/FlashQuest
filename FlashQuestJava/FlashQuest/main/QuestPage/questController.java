@@ -1,5 +1,6 @@
 package QuestPage;
 
+import AccountPage.AccountPage;
 import Backend.Controller.FlashQuestController;
 import Backend.Model.Flashcard;
 import Backend.Model.Folder;
@@ -31,6 +32,8 @@ public class questController {
     }
     public void clickUserButton() {
         // TODO HAGGAI
+        AccountPage accountPage = new AccountPage(stage, flashQuestController);
+        accountPage.show();
     }
 
     // TODO ADD BATTLE SCNECE LOGIC HERE

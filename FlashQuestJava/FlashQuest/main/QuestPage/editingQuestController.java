@@ -1,5 +1,6 @@
 package QuestPage;
 
+import AccountPage.AccountPage;
 import Backend.Controller.FlashQuestController;
 import Backend.Model.Flashcard;
 import Backend.Model.Folder;
@@ -29,6 +30,8 @@ public class editingQuestController {
     }
     public void clickUserButton() {
         // TODO HAGGAI
+        AccountPage accountPage = new AccountPage(stage, flashQuestController);
+        accountPage.show();
     }
 
     public void clickSaveBtn(String newQuestion, String newAnswer, Folder folder, Flashcard flashcard) {
