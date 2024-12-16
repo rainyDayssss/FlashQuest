@@ -353,7 +353,7 @@ public class AccountPage
         Scene scene = new Scene(root, 1280, 620); // Scene size
         String css = (this.getClass().getResource("/AccountPage/menuPage.css")).toExternalForm();
         scene.getStylesheets().add(css);
-        stage.setTitle("Ducay's FlashQuest");
+        stage.setTitle("FlashQuest");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

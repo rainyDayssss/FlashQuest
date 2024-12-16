@@ -146,4 +146,5 @@ public class FlashQuestController {
     public void deleteFolder(Folder folder) {
         folderService.deleteFolder(folder);
     }
+
 }
