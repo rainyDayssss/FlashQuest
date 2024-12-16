@@ -300,7 +300,7 @@ public class AccountPage
         Button menuButton = sideBarIcons("Menu", menu, 40, 40);
         menuButton.getStyleClass().add("menu-button");
 
-        Button smithCardButton = sideBarIcons("Smithcard", note, 40, 40);
+        Button smithCardButton = sideBarIcons("SmithFolder", note, 40, 40);
         smithCardButton.getStyleClass().add("menu-button");
 
         Button questButton = sideBarIcons("Quest", quest, 40, 40);

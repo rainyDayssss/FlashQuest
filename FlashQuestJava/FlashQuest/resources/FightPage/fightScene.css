@@ -99,6 +99,7 @@
 }
 /* buttons of the sidebar */
 .menu-button {
+
     -fx-background-color: transparent;
     -fx-text-fill: #ecf0f1; /* Light gray text */
     -fx-font-size: 15px;

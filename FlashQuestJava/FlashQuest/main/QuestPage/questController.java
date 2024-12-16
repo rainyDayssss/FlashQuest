@@ -5,6 +5,7 @@ import Backend.Controller.FlashQuestController;
 import Backend.Model.Flashcard;
 import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
+import FightPage.Battle;
 import QuestPage.editQuest;
 import FolderPage.folder;
 import MenuPage.menu;
@@ -38,7 +39,16 @@ public class questController {
 
     // TODO ADD BATTLE SCNECE LOGIC HERE
     public void clickStartButton(Folder folder) {
-
+        if (!folder.isEmpty()) {
+            Battle battlePage = new Battle();
+            battlePage.setFlashQuestController(flashQuestController);
+            battlePage.setFolder(folder);
+            battlePage.start(stage);
+            System.out.println("Please show");
+        }
+        else {
+            System.out.println("Empty Folder");
+        }
     }
 
     public void clickViewButton(Folder folder) {

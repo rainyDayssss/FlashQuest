@@ -43,7 +43,7 @@ public class Level {
 
     public void correctFlashcardsToExperience(int totalCorrectFlashcards) {
         // Each 2 correct flashcards grant 1 experience point
-        int experienceFromFlashcards = totalCorrectFlashcards / 2;
+        int experienceFromFlashcards = totalCorrectFlashcards; // TODO change if needed a coversion chu chu
         gainExperience(experienceFromFlashcards);
     }
 
