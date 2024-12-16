@@ -137,3 +137,20 @@
 .menu-button:pressed {
     -fx-background-color: #58470E;
 }
+
+.delete-button {
+    -fx-background-color: #FF4C4C;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.delete-button2 {
+    -fx-background-color: #CC0000; /* Darker red */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+

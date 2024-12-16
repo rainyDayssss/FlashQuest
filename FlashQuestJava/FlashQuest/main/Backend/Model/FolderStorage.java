@@ -127,4 +127,10 @@ public class FolderStorage {
             }
         }
     }
+
+    public void deleteFolder(Folder folder) {
+        folderListWithCorrectFlashcards.remove(folder);
+        folderListWithWrongFlashcards.remove(folder);
+        folderList.remove(folder);
+    }
 }

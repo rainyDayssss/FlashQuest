@@ -142,4 +142,8 @@ public class FlashQuestController {
     public void editFlashcardByFolderIdAndFlashcardId(String newQuestion, String newAnswer, Folder folder, Flashcard flashcard) {
         folderService.editFlashcardByFolderIdAndFlashcardId(newQuestion, newAnswer, folder, flashcard);
     }
+
+    public void deleteFolder(Folder folder) {
+        folderService.deleteFolder(folder);
+    }
 }

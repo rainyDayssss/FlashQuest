@@ -85,4 +85,8 @@ public class FolderService {
         Flashcard flashcard2 = folderStorage.getFolderByFolderId(folder.getId()).getFlashcardByFlashcardId(flashcard.getId());
         flashcard2.editFlashcard(newQuestion, newAnswer);
     }
+
+    public void deleteFolder(Folder folder) {
+        folderStorage.deleteFolder(folder);
+    }
 }

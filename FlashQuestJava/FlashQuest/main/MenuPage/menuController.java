@@ -45,4 +45,11 @@ public class menuController {
         quest Quest = new quest(stage, flashQuestController);
         Quest.show();
     }
+
+    // TODO
+    public void clickViewButton(Folder folder) {
+    }
+
+    public void clickStartButton(Folder folder) {
+    }
 }

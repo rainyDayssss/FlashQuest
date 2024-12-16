@@ -78,7 +78,7 @@ public class folder {
 
         // TODO Close button setup
         Button closeButton = new Button("X");
-        closeButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 18px;");
+        closeButton.setStyle("-fx-background-color: #CC0000; -fx-text-fill: white; -fx-font-size: 18px;");
         closeButton.setPrefSize(40, 40);
         closeButton.setOnAction(e -> closePage());
 
@@ -89,14 +89,14 @@ public class folder {
         topBar.setStyle("-fx-background-color: transparent;");
 
         // Title setup
-        Text part1 = new Text("Edit ");
-        Text part2 = new Text("Smithcards");
-        TextFlow title1 = new TextFlow(part1, part2);
-        title1.setTranslateY(30);
-        title1.setTranslateX(140);
-        part1.setStyle("-fx-fill: white;");
-        part2.setStyle("-fx-fill: #FFCF0E;");
-        title1.getStyleClass().add("Title");
+//        Text part1 = new Text("Edit ");
+//        Text part2 = new Text("Smithcards");
+//        TextFlow title1 = new TextFlow(part1, part2);
+//        title1.setTranslateY(30);
+//        title1.setTranslateX(140);
+//        part1.setStyle("-fx-fill: white;");
+//        part2.setStyle("-fx-fill: #FFCF0E;");
+//        title1.getStyleClass().add("Title");
 
         VBox questLayout = new VBox(15); // Added spacing between folder items
         questLayout.setAlignment(Pos.TOP_CENTER);
@@ -157,14 +157,11 @@ public class folder {
         text.setWrappingWidth(200);
         text.getStyleClass().add("question");
 
-        Button edit = new Button(" Edit ");
         Button select = new Button(" Select ");
         select.setPrefWidth(200);
         select.setPrefHeight(40);
         select.getStyleClass().add("select-button");
-        edit.setPrefWidth(200);
-        edit.setPrefHeight(40);
-        edit.getStyleClass().add("edit-button");
+
 
         // Set action for the Select button
         select.setOnAction(e -> {
@@ -172,13 +169,8 @@ public class folder {
             controller.clickSelectButton(folder);
         });
 
-        // Set action for the Edit button
-        edit.setOnAction(e -> {
-            // Logic to edit the selected folder
-            controller.clickEditButton(folder);
-        });
 
-        HBox layout = new HBox(25, text, edit, select);
+        HBox layout = new HBox(25, text, select);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 15;"); // Optional spacing around the box
         layout.getStyleClass().add("quest-layout");

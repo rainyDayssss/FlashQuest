@@ -43,4 +43,9 @@ public class questController {
         EditQuestPage.show();
     }
 
+    public void clickDeleteFolderBtn(Folder folder) {
+        flashQuestController.deleteFolder(folder);
+        quest QuestPage = new quest(stage, flashQuestController);
+        QuestPage.show();
+    }
 }

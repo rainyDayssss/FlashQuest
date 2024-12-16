@@ -6,7 +6,9 @@ import StartingPage.StartingPageController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.layout.*;
@@ -17,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.TextFlow;
 
+import java.util.Optional;
 
 
 public class quest {
@@ -79,18 +82,21 @@ public class quest {
         VBox questLayout = new VBox(5);
         questLayout.setAlignment(Pos.TOP_CENTER);
 
-        Text part1 = new Text("Choose a ");
-        Text part2 = new Text("Quest");
-        TextFlow title1 = new TextFlow(part1, part2);
-        title1.setTranslateY(30); // Sets the text down a little bit
-        title1.setTranslateX(140); // Sets the text to the center
-        part1.setStyle("-fx-fill: white;");
-        part2.setStyle("-fx-fill: #FFCF0E;");
-        title1.getStyleClass().add("Title");
-        questLayout.getChildren().add(title1);
+//        Text part1 = new Text("Choose a ");
+//        Text part2 = new Text("Quest");
+//        TextFlow title1 = new TextFlow(part1, part2);
+//        title1.setTranslateY(30); // Sets the text down a little bit
+//        title1.setTranslateX(140); // Sets the text to the center
+//        part1.setStyle("-fx-fill: white;");
+//        part2.setStyle("-fx-fill: #FFCF0E;");
+//        title1.getStyleClass().add("Title");
+//        questLayout.getChildren().add(title1);
 
         //Creates buttons based on how many the user has added folders
         for (Folder folder : flashQuestController.getAllFolders()) {
+            if (flashQuestController.getAllFolders().isEmpty()) {
+                // Show a text messge saying its empty
+            }
             HBox questItem = questShow(folder);
             questLayout.getChildren().add(questItem);
             questItem.setFocusTraversable(false); // Prevent focus on questLayout
@@ -140,6 +146,7 @@ public class quest {
     //Responsible for showing the quest
     private HBox questShow(Folder folder) {
         questController controller = new questController(stage, flashQuestController);
+
         // Create a text node for the folder name
         Text text = new Text(folder.getFolderName());
         text.setWrappingWidth(200);
@@ -148,31 +155,48 @@ public class quest {
         // Create buttons
         Button view = new Button(" View ");
         Button start = new Button(" Start ");
+        Button delete = new Button(" X "); // Delete button
+
         start.setPrefWidth(200);
         start.setPrefHeight(40);
         view.setPrefWidth(200);
         view.setPrefHeight(40);
+        delete.setPrefWidth(40);
+        delete.setPrefHeight(40);
+
         start.getStyleClass().add("start-button");
         view.getStyleClass().add("view-button");
+        delete.getStyleClass().add("delete-button2"); // Assign a specific style class for delete button
 
         // Prevent focus on the buttons
         view.setFocusTraversable(false);
         start.setFocusTraversable(false);
+        delete.setFocusTraversable(false);
 
-        // TODO should be edit. and can the list of flascards
-        // Add button functionality
-        view.setOnAction(e -> {
-            // Handle "View" button click
-            controller.clickViewButton(folder);
-        });
+        // Add functionality to buttons
+        view.setOnAction(e -> controller.clickViewButton(folder));
+        start.setOnAction(e -> controller.clickStartButton(folder));
 
-        start.setOnAction(e -> {
-            // Handle "Start" button click
-            controller.clickStartButton(folder);
+        // Handle delete button click
+        delete.setOnAction(e -> {
+            // Create a confirmation dialog
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Delete Folder");
+            confirmationAlert.setHeaderText("Are you sure you want to delete this folder?");
+            confirmationAlert.setContentText("Folder: " + folder.getFolderName());
+            // TODO gotta make this preety
+
+            // Show the alert and capture the user's response
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Perform deletion
+                controller.clickDeleteFolderBtn(folder);
+                // referesh the UI
+            }
         });
 
         // Layout
-        HBox layout = new HBox(25, text, view, start);
+        HBox layout = new HBox(25, text, view, start, delete);
         layout.setTranslateY(50);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 10;"); // Optional spacing around the box
@@ -180,6 +204,5 @@ public class quest {
 
         return layout;
     }
-
 
 }
