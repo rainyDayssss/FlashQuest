@@ -1,6 +1,7 @@
 package MenuPage;
 
 import Backend.Controller.FlashQuestController;
+import Backend.Model.Folder;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -56,13 +57,14 @@ public class menu{
         // Menu items
         Button menuButton = sideBarIcons("Menu", menu, 40, 40);
         menuButton.getStyleClass().add("menu-button");
-        Button smithCardButton = sideBarIcons("Smithcard", note, 40, 40);
+        Button smithCardButton = sideBarIcons("SmithFolder", note, 40, 40);
         smithCardButton.getStyleClass().add("menu-button");
         Button questButton = sideBarIcons("Quest", quest, 40, 40);
         questButton.getStyleClass().add("menu-button");
         Button userButton = sideBarIcons(flashQuestController.getUser().getUsername(), user, 30, 40);
         userButton.getStyleClass().add("menu-button");
 
+        // TODO MENU BTNS
         menuController controller = new menuController(stage, flashQuestController);
         menuButton.setOnAction(e -> controller.clickMenuButton());
         smithCardButton.setOnAction(e -> controller.clickSmithFolderButton());
@@ -189,7 +191,7 @@ public class menu{
         VBox questLayout = new VBox(5);
         questLayout.setAlignment(Pos.TOP_CENTER);
 
-        Text title1 = new Text("Quest");
+        Text title1 = new Text("New Quest");
         title1.setTranslateY(20); // Sets the text down a little bit
         title1.setTranslateX(15); // Sets the text to the center
         title1.setStyle("-fx-fill: #FFCF0E;");
@@ -197,9 +199,8 @@ public class menu{
         questLayout.getChildren().add(title1);
 
         //Creates buttons based on how many the user has added folders
-        int total = 15;
-        for (int i=0; i < total; i++) {
-            HBox questItem = questShow("Technology Quest ");
+        for (Folder folder : flashQuestController.getAllFolderWithWrongFlashcards()) {
+            HBox questItem = questShow(folder);
             questLayout.getChildren().add(questItem);
             questItem.setFocusTraversable(false); // Prevent focus on questLayout
         }
@@ -255,9 +256,13 @@ public class menu{
         return button;
     }
 
-    private HBox questShow(String name) {
-        Text text = new Text (name);
+    private HBox questShow(Folder folder) {
+        menuController controller = new menuController(stage, flashQuestController);
+        // Create a text node for the folder name
+        Text text = new Text(folder.getFolderName());
         text.getStyleClass().add("question");
+
+        // Create buttons
         Button view = new Button(" View ");
         Button start = new Button(" Start ");
         start.setPrefWidth(200);
@@ -266,17 +271,34 @@ public class menu{
         view.setPrefHeight(40);
         start.getStyleClass().add("start-button");
         view.getStyleClass().add("view-button");
+
+        // Prevent focus on the buttons
         view.setFocusTraversable(false);
         start.setFocusTraversable(false);
 
+        // TODO VIEW AND START FUNCTIONS BTN
+        // Add button functionality
+        view.setOnAction(e -> {
+            // Handle "View" button click
+            controller.clickViewButton(folder);
+        });
 
+        start.setOnAction(e -> {
+            // Handle "Start" button click
+            controller.clickStartButton(folder);
+        });
+
+        // Layout
         HBox layout = new HBox(25, text, view, start);
         layout.setTranslateY(50);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 10;"); // Optional spacing around the box
         layout.getStyleClass().add("quest-layout");
+
         return layout;
     }
+
+    // TODO BE DYNAMIC, for battle scene
     private ImageView userIcon (String classes) {
         Image warrior = new Image(getClass().getResource("Warrior.gif").toExternalForm());
         Image mage = new Image(getClass().getResource("Mage.gif").toExternalForm());

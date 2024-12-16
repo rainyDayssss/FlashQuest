@@ -53,7 +53,7 @@ public class createFolderPage {
         // Sidebar buttons with icons
         Button menuButton = sideBarIcons("Menu", new Image(getClass().getResource("Content.png").toExternalForm()), 40, 40);
         menuButton.getStyleClass().add("menu-button");
-        Button smithCardButton = sideBarIcons("Smithcard", new Image(getClass().getResource("Note.png").toExternalForm()), 40, 40);
+        Button smithCardButton = sideBarIcons("SmithFolder", new Image(getClass().getResource("Note.png").toExternalForm()), 40, 40);
         smithCardButton.getStyleClass().add("menu-button");
         Button questButton = sideBarIcons("Quest", new Image(getClass().getResource("Quest.png").toExternalForm()), 40, 40);
         questButton.getStyleClass().add("menu-button");

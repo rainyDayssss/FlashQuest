@@ -4,16 +4,14 @@ import Backend.Controller.FlashQuestController;
 import Backend.Model.Flashcard;
 import Backend.Model.Folder;
 import CreateFolderPage.createFolderPage;
-import QuestPage.editQuest;
-import FolderPage.folder;
 import MenuPage.menu;
 import javafx.stage.Stage;
 
-public class questController {
+public class editingQuestController {
     private final Stage stage;
     private final FlashQuestController flashQuestController;
 
-    public questController(Stage stage, FlashQuestController flashQuestController) {
+    public editingQuestController(Stage stage, FlashQuestController flashQuestController) {
         this.stage = stage;
         this.flashQuestController = flashQuestController;
     }
@@ -33,14 +31,9 @@ public class questController {
         // TODO HAGGAI
     }
 
-    // TODO ADD BATTLE SCNECE LOGIC HERE
-    public void clickStartButton(Folder folder) {
-
-    }
-
-    public void clickViewButton(Folder folder) {
+    public void clickSaveBtn(String newQuestion, String newAnswer, Folder folder, Flashcard flashcard) {
+        flashQuestController.editFlashcardByFolderIdAndFlashcardId(newQuestion, newAnswer, folder, flashcard);
         editQuest EditQuestPage = new editQuest(stage, flashQuestController, folder);
         EditQuestPage.show();
     }
-
 }

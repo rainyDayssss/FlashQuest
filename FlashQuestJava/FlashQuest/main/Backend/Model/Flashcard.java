@@ -37,4 +37,9 @@ public class Flashcard {
     public int getId() {
         return id;
     }
+
+    public void editFlashcard(String newQuestion, String newAnswer) {
+        setQuestion(newQuestion);
+        setAnswer(newAnswer);
+    }
 }
