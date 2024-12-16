@@ -47,4 +47,9 @@ public class CreditsPageController
         AccountPage accountPage = new AccountPage(stage, flashQuestController);
         accountPage.show();
     }
+
+    public void clickHiddenButton()
+    {
+        flashQuestController.setEighthBadgeUnlocked(true);
+    }
 }
