@@ -184,7 +184,6 @@ public class Battle extends Application {
         correction.setTextAlignment(TextAlignment.CENTER);
 
         // Root pane
-        playSound();
         Pane root = new Pane();
 
         root.getChildren().addAll(
@@ -218,18 +217,4 @@ public class Battle extends Application {
         this.folder = folder;
     }
 
-    public void playSound() {
-        try {
-            File soundFile = new File(getClass().getResource("/FightPage/battleMusic.wav").toURI());
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(soundFile));
-            clip.loop(Clip.LOOP_CONTINUOUSLY); // Infinite loop
-            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            volumeControl.setValue(-10.0f);  // Adjust the volume level here
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();  // Print stack trace for more details
-            System.out.println("Error playing sound: " + e.getMessage());
-        }
-    }
 }

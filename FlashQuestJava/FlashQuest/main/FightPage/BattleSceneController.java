@@ -16,6 +16,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import java.io.File;
+
 public class BattleSceneController {
     private Text questionText;  // Displays the current question
     private Label resultLabel;  // Displays the result after the user submits an answer
@@ -35,7 +40,7 @@ public class BattleSceneController {
     public Text errorMessage;  // Displays error messages, like incorrect answers
     private int flashcardIndex = 0;
     private int correctFlashcardCount = 0;
-
+    private Clip clip;
     // TODO QUESTIONS
 //    private String currentQuestion = "When did WW2 happen?"; // Example question
 //    private String currentAnswer = "1939"; // Example answer
@@ -58,6 +63,7 @@ public class BattleSceneController {
 
         // Set the initial question from the flashcard
         questionText.setText(flashcard.getQuestion());
+        playSound();
     }
 
     // Handles the submit action when the player answers the question
@@ -123,7 +129,10 @@ public class BattleSceneController {
 
                 // TODO unique Ability
                 if (correctFlashcardCount == 3) {
-                    attackDamage += 100;
+                    resultLabel.setText("Unique Ability Activated! Massive damage dealt to the enemy.");
+                    resultLabel.setStyle("-fx-text-fill: blue;");
+                    enemyHealth -= 50; // Deal massive damage
+                    updateHealthBars();
                 }
 
                 // Animate the character's attack and hit effect
@@ -175,6 +184,7 @@ public class BattleSceneController {
         flashQuestController.getLevelObject().correctFlashcardsToExperience(correctFlashcardCount);
         quest Quest = new quest(stage, flashQuestController);  // Create a new quest page
         Quest.show();  // Show the quest page
+        stopSound();
     }
 
     // Updates the health bars for both the player and the enemy
@@ -242,5 +252,30 @@ public class BattleSceneController {
         }
 
         moveForward.play(); // Start moving forward
+    }
+
+    public void playSound() {
+        try {
+
+            if (clip != null && clip.isRunning()) {
+                return;  // Music is already playing, no need to start it again
+            }
+
+            File soundFile = new File(getClass().getResource("/FightPage/battleMusic.wav").toURI());
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(soundFile));
+            clip.loop(Clip.LOOP_CONTINUOUSLY); // Infinite loop
+            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            volumeControl.setValue(-10.0f);  // Adjust the volume level here
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();  // Print stack trace for more details
+            System.out.println("Error playing sound: " + e.getMessage());
+        }
+    }
+    public void stopSound() {
+        if (clip != null && clip.isRunning()) {
+            clip.stop();  // Stop the clip if it's currently playing
+        }
     }
 }
