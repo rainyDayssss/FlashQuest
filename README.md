@@ -1,2 +1,2 @@
 # FlashQuest
-An RPG - like Flashcard App..
+An RPG - like Flashcard App.
