@@ -32,7 +32,4 @@ module com.example.flashquestjava {
 
     opens FightPage to javafx.fxml;
     exports FightPage;
-
-    opens battleapp to javafx.fxml;
-    exports battleapp;
 }

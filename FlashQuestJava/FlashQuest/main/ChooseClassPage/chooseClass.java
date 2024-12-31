@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+
 public class chooseClass {
     private final Stage stage;
     private final FlashQuestController flashQuestController;
